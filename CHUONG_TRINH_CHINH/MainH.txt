@@ -1,0 +1,85 @@
+#ifndef main_application_h
+#define main_application_h
+
+#include <Arduino.h>
+#include "config/config.h"
+#include <HardwareSerial.h>
+#include "webserver/webserver.h"
+#include "SPIFFS.h"
+#include <Wire.h>
+#include "RTClib.h"
+#include <time.h>
+#include <HTTPClient.h>
+#include <ESP32HTTPUpdate.h>
+#include <Update.h>
+#include "miniz.h"
+
+//uart connect with 8266
+#define TX_P    GPIO_NUM_23
+#define RX_P    GPIO_NUM_25
+
+//TFMini plus
+#define TF_RX_PIN   GPIO_NUM_26 
+#define TF_TX_PIN   GPIO_NUM_27
+
+#define RESET_PIN_BUTTON    GPIO_NUM_15
+
+//relay
+#define RELAY_PIN   GPIO_NUM_32
+
+//real time module
+#define SDA_PIN     GPIO_NUM_18 
+#define SCL_PIN     GPIO_NUM_19
+
+#define CMD_SET_COLOR       '!'
+#define CMD_CLEAR           '@'
+#define CMD_MOVE_TO_00      '#'
+#define CMD_MOVE_TO_XY      '&'
+#define CMD_DATA_BEGIN      '$'
+#define CMD_DATA_END        '%'
+#define CMD_SET_DIRECTION   '^'
+#define CMD_SET_FONT_1      '*'
+#define CMD_SET_FONT_2      '('
+#define CMD_SET_FONT_3      ')'
+#define CMD_CLEAR_REC       '['
+
+#define BLACK     0x00
+#define RED       0x01
+#define GREEN     0x02
+#define YELLOW    0x03
+
+#define CONST_PRINT_DIRECTION_NORMAL    0
+#define CONST_PRINT_DIRECTION_LEFT      0
+#define CONST_PRINT_DIRECTION_RIGHT     1
+#define CONST_PRINT_DIRECTION_TOP       2
+#define CONST_PRINT_DIRECTION_BOTTOM    3
+
+// Define the timezone offset in seconds (GMT+7)
+const int timezoneOffset = 25200; // GMT+7 is 7 hours = 25200 seconds
+
+void relayOn();
+void relayOff();
+void displayTime();
+DateTime adjustForTimezone(DateTime time, int offsetSeconds);
+String getCurrentDate();
+String getCurrentTime();
+String getCurrentDateTime();
+uint32_t getCurrentDateTimeInt();
+void checkCar();
+void gotoAccessPointMode();
+void gotoUpdateFirmware();
+void gotoUpdateFileSystem();
+bool updateFilesystem(const char* url);
+bool longPress();
+int* parseIp(String ipAddress);
+void sendDataToLedModule(String data);
+String to2DecimalChar(int value);
+
+unsigned int fileWriteCallback(void* pOpaque, mz_uint64 file_ofs, const void* pBuf, size_t n);
+bool unzipFile(const char* zipFilePath, const char* outputDir);
+bool extractZipToRoot(const char* zipFilePath);
+bool downloadAndUpdateFilesystem(const char* url);
+bool createDirectories(const String& path);
+void printStackHighWaterMark();
+void loopTask(void *pvParameters);
+#endif  // main_application_h
