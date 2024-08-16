@@ -43,8 +43,8 @@ void Matrix::begin()
 
 void Matrix::fillScreen(unsigned char color)
 {
-  unsigned char r = !!(color & 0x01);
-  unsigned char g = !!(color & 0x01);
+  unsigned char r = !!(color & RED);
+  unsigned char g = !!(color & GREEN);
   for (int i = 0; i < CONST_ROWS; i++)
   {
     for (int j = 0; j < 32; j++)
@@ -133,6 +133,39 @@ void Matrix::moveTo(unsigned char x, unsigned char y)
 void Matrix::setCursor(unsigned char x, unsigned char y)
 {
   moveTo(x, y);
+}
+
+void Matrix::drawLogo(unsigned char color)
+{
+  int x = 0;
+  int y = 0;
+  unsigned char fontW = 32;
+  clearBuffer();
+  for(int b = 0; b<128; b++){
+    int byte = font_logo[0][b];
+    for(int i = 0; i<8; i++){
+      if ((byte & (0x80 >> i)) != 0){
+        switch(m_direction){
+          case CONST_PRINT_DIRECTION_RIGHT:
+            drawPoint(31 - x, 31 - y, color);
+            break;
+          case CONST_PRINT_DIRECTION_TOP:
+            drawPoint(31 - y, x, color);
+            break;
+          case CONST_PRINT_DIRECTION_BOTTOM:
+            drawPoint(y, 31 - x, color);
+            break;
+          default:
+            drawPoint(x, y, color);
+        }
+      }
+      x++;
+    }
+    if(x>=fontW){
+      x = 0;
+      y++;
+    }
+  }
 }
 
 void Matrix::drawChar(unsigned char txt, unsigned char color, unsigned char font_size)

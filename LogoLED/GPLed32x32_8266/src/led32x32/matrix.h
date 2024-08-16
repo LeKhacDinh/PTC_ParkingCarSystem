@@ -53,6 +53,7 @@ public:
     void drawPoint(unsigned char x, unsigned char y, unsigned char color);
     void moveTo(unsigned char x, unsigned char y);
     void setCursor(unsigned char x, unsigned char y);
+    void drawLogo(unsigned char color);
     void drawChar(unsigned char txt,unsigned char color, unsigned char font_size);
     void drawCharRight(unsigned char txt,unsigned char color, unsigned char font_size);
     void drawCharTop(unsigned char txt,unsigned char color, unsigned char font_size);
