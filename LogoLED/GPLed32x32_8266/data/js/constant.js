@@ -1,0 +1,1 @@
+var BOOT_MODE_NORMAL = 2;

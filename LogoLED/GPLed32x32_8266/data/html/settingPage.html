@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv='X-UA-Compatible' content='IE=8, IE=9, IE=10'>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <title>Setting</title>
+    <link rel='stylesheet' href='/style.css' />
+</head>
+
+<body>
+    <center>
+        <div class='logo' id='logo' style='cursor: pointer'>&nbsp;</div>
+    </center>
+    <h2>Setting</h2>
+    <table>
+        <tr>
+            <td class='menu'>
+                <div id='mnu-wifi' class='active'>Wifi</div>
+                <div id='mnu-security'>Security</div>
+                <div id='mnu-device'>Device</div>
+            </td>
+            <td>
+                <form id='formSaveSetting' action='/saveSetting' method='post'>
+
+                    <input type='hidden' name='sessionId' value='" + sessionId + "'>
+                    <div id='wifi-session'>
+                        Wifi ssid:<br>
+                        <select id='ssid' name='ssid'>
+                        </select>&nbsp;<input type='button' id='btnWifiRefresh' value='Refresh'><br>
+                        Wifi password:<br>
+                        <input type='password' id='password' name='ssid_password'><br><br>
+                        <div class='device-info'><label>ID Device:</label>&nbsp;&nbsp;<label id='lblDeviceId'></label>
+                        </div><br>
+                        DHCP: <input type='radio' id='dhcp' name='ipType' value='dhcp' selected><br>
+                        Manual IP: <input type='radio' id='manual-ip' name='ipType' value='manual-ip'><br>
+                        <div id='manual-ip-session' class='manual-ip hide-item'>
+                            <label for='ipAddress'>IP Address:</label><br>
+                            <input type='text' id='ipAddress' name='ipAddress'
+                                onchange='generateGatewayAndSubnetMask()'><br><br>
+                            <label for='gateway'>Gateway:</label><br>
+                            <input type='text' id='gateway' name='gateway'><br><br>
+                            <label for='subnet'>Subnet Mask:</label><br>
+                            <input type='text' id='subnet' name='subnet'><br><br>
+                        </div>
+                    </div>
+
+                    <div id='security-session' class='hide-item'>
+                        Login id:<br>
+                        <input type='text' id='login_id' name='login_id'><br>
+                        Login password:<br>
+                        <input type='password' id='login_password' name='login_password'><br>
+                    </div><br>
+
+                    <div id='device-session' class='hide-item'>
+                        Tên thiết bị:<br>
+                        <input type='text' id='name' name='name'><br>
+                        Min distance:<br>
+                        <input type='text' id='min_distance' name='min_distance'><br>
+                        Max distance:<br>
+                        <input type='text' id='max_distance' name='max_distance'><br>
+                    </div><br>
+
+                    <input type='button' id='btnSaveSetting' value='Lưu'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='button'
+                        id='btnRestart' value='Khởi động lại'>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+<script type='text/javascript' src='/main.js?sessionId=" + sessionId + "'>
+</script>
+
+</html>

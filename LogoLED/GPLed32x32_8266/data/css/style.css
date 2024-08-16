@@ -1,0 +1,149 @@
+.logo {
+    background-image: url("/logo.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 88px;
+    height: 88px;
+    display: inline-block;
+}
+
+body {
+    font-size: 16px;
+}
+
+.login-form {
+    display: inline-block;
+    text-align: left;
+}
+
+div.relay {
+    clear: both;
+    border: 1px solid;
+    display: inline-block;
+    padding: 5px;
+}
+
+.my-wifi-router .header {
+    float: left;
+    width: 170px;
+    border: 1px solid black;
+    padding: 10px;
+    height: 42px;
+    box-sizing: border-box;
+}
+
+.my-wifi-router .detail {
+    float: left;
+    width: 370px;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 42px;
+    margin-left: 5px;
+}
+
+.my-wifi-router input,
+.my-application .detail input {
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.my-wifi-router .row,
+.my-application .row {
+    clear: both;
+    padding-top: 5px;
+}
+
+.my-wifi-router .button,
+.my-application .button {
+    width: 130px;
+    border: 1px solid black;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.my-application .header {
+    float: left;
+    width: 130px;
+    padding: 10px;
+    height: 42px;
+    box-sizing: border-box;
+}
+
+.my-application .detail {
+    float: left;
+    width: 370px;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 42px;
+    margin-left: 5px;
+}
+
+.my-application .lblHeader {
+    width: 50px;
+    display: inline-block;
+}
+
+.my-application #my_app_tong_tg {
+    color: red;
+    font-size: 60px;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.my-application #my_app_den_canh_bao {
+    font-size: 60px;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.my-application #my_app_den_canh_bao.on {
+    color: red;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.hide-item {
+    display: none !important;
+}
+
+.menu {
+    vertical-align: text-bottom;
+    width: 100px;
+    border-right: 1px solid gray;
+}
+
+.menu div {
+    width: 100%;
+    cursor: pointer;
+}
+
+.menu div.active {
+    background-color: yellow;
+    cursor: default;
+}
+
+.device-info label {
+    background-color: #5b9bd5;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+}
+
+.main-menu {
+    margin-top: 10px;
+}
+
+.main-menu label {
+    border: 1px solid black;
+    padding: 10px;
+    display: inline-block;
+    width: 170px;
+    text-align: center;
+}

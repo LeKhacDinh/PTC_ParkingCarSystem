@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='X-UA-Compatible' content='IE=8, IE=9, IE=10' >
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+<title>Setting</title>
+<link rel='stylesheet' href='/style.css' />
+<script type='text/javascript' src='/jquery.js'>
+</script>
+</head>
+<body>
+<center><div class='logo' id='logo' style='cursor: pointer'>&nbsp;</div></center>
+<div class='my-application'>
+    <form id='formMyApplication' action='/myApplicationSave' method='post'>
+        <input type='hidden' name='sessionId' value='" + sessionId + "'>
+        <div class='row'>
+            <div class='header'>WIFI Router:</div>
+            <div class='detail'><input type='text' id='my_app_name' name='my_app_name' maxlength='40' readonly></div>
+        </div>
+        <div class='row'>
+            <div class='header'>IP:</div>
+            <div class='detail'><input type='text' id='my_app_ip' name='my_app_ip' maxlength='20' readonly></div>
+        </div>
+        <div style='clear: both;'>
+            <div>Điều kiện xác định có xe:</div>
+            <div style='padding-left:100px;height: 25px;'><label class='lblHeader'>Từ:</label><input type='text' id='my_app_min_distance' name='my_app_min_distance' maxlength='5' oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">&nbsp;&nbsp;cm</div>
+            <div style='padding-left:100px;height: 25px;'><label class='lblHeader'>Đến:</label><input type='text' id='my_app_max_distance' name='my_app_max_distance' maxlength='5' oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">&nbsp;&nbsp;cm</div>
+            <div style='height: 25px;'>Số phút tối đa: <input type='text' id='my_app_max_minute' name='my_app_max_minute' maxlength='2' oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');">&nbsp;&nbsp;phút</div>
+        </div>
+    </form>
+    <div style='clear: both;'></div>
+	<br />
+    <div>
+        <input class='button' type='button' id='btnMyApplicationSave' value='Save'>&nbsp;&nbsp;&nbsp;&nbsp;<input class='button' type='button' id='btnMyApplicationRefresh' value='Refresh'>
+    </div>
+
+    <br />
+    <div style='clear: both;'></div>
+	<div>
+	    <table>
+	        <tr>
+	            <td>Giá trị hiện tại của cảm biến:</td>
+	            <td colspan='2'><label id='my_app_current_distance' style='padding-left: 30px;'></label> <label>cm</label></td>
+	        </tr>
+	        <tr>
+	            <td>Kết quả xác định:</td>
+	            <td colspan='2'><label id='my_app_kq_xac_dinh'></label></td>
+	        </tr>
+	        <tr>
+	            <td>Từ lúc:</td>
+	            <td colspan='2'><label id='my_app_from'></label></td>
+	        </tr>
+	        <tr>
+	            <td>Đến lúc:</td>
+	            <td colspan='2'><label id='my_app_to'></label></td>
+	        </tr>
+	        <tr>
+	            <td>Tổng thời gian đã đậu:</td>
+	            <td>&nbsp;</td>
+	            <td>Đèn cảnh:</td>
+	        </tr>
+	        <tr>
+	            <td></td>
+	            <td><label id='my_app_tong_tg'></label></td>
+	            <td><label id='my_app_den_canh_bao'></label></td>
+	        </tr>
+	    </table>
+	</div>
+    <div>
+        Lịch sử giao dịch:
+    </div>
+    <div id="idLichSuGD"></div>
+</div>
+	
+</body>
+
+<script type='text/javascript' src='/myApplication.js?sessionId=" + sessionId + "'>
+</script>
+</html>

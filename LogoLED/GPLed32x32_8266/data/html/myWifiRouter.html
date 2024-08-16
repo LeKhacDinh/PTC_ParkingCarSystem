@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv='X-UA-Compatible' content='IE=8, IE=9, IE=10' >
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+<title>Setting</title>
+<link rel='stylesheet' href='/style.css' />
+</head>
+<body>
+<center><div class='logo' id='logo' style='cursor: pointer'>&nbsp;</div></center>
+<div class='my-wifi-router'>
+    <form id='formMyWifiRouterSave' action='/myWifiRoutersave' method='post'>
+	<input type='hidden' name='sessionId' value='" + sessionId + "'>
+	<div class='row'>
+		<div class='header'>WIFI Router:</div>
+		<div class='detail'><input type='text' id='wifi_router_name' name='wifi_router_name' maxlength='40'></div>
+	</div>
+	<div class='row'>
+		<div class='header'>IP:</div>
+		<div class='detail'><input type='text' id='wifi_router_ip' name='wifi_router_ip'  onchange='generateGatewayAndSubnetMask()'  maxlength='20'></div>
+	</div>
+	<div class='row'>
+		<div class='header'>Gateway:</div>
+		<div class='detail'><input type='text' id='wifi_router_gateway' name='wifi_router_gateway' maxlength='20'></div>
+	</div>
+	<div class='row'>
+		<div class='header'>Subnet Mask:</div>
+		<div class='detail'><input type='text' id='wifi_router_subnetmask' name='wifi_router_subnetmask' maxlength='20'></div>
+	</div>
+	<div class='row'>
+		<div class='header'>WIFI Passwords:</div>
+		<div class='detail'><input type='password' id='wifi_router_password' name='wifi_router_password' maxlength='32'></div>
+	</div>
+    </form
+	<br />
+    <div style='clear: both;'>(Cảnh báo: Bạn phải đảm bảo rằng bạn đã nhớ hay đã lưu các thông số nêu trên)</div>
+    <div>
+        <input class='button' type='button' id='btnResetToDefault' value='Reset to default'>&nbsp;&nbsp;&nbsp;&nbsp;<input class='button' type='button' id='btnMyWifiRouterSave' value='Save'>&nbsp;&nbsp;&nbsp;&nbsp;<input class='button' type='button' id='btnLogout' value='Logout'>
+    </div>
+</div>
+</body>
+
+<script type='text/javascript' src='/wifiRouter.js?sessionId=" + sessionId + "'>
+</script>
+</html>
